@@ -1,9 +1,10 @@
 # PBS configuration
-queue: normal
+queue: normalbw
 project: x77
 walltime: 1:00:00
-jobname: 01deg_jra55_ryf
-ncpus: 2632
+jobname: minimal_01deg_jra55_ryf
+ncpus: 2156
+mem: 9850Gb
 shortpath: /short/x77
 
 # Model configuration
@@ -20,14 +21,16 @@ submodels:
     - name: ocean
       model: mom
       exe: /short/public/access-om2/bin/fms_ACCESS-OM_afe80bfd.x
-      input: /short/public/access-om2/input_38570c62/mom_01deg
-      ncpus: 1411
+      input:
+          - /short/public/access-om2/input_38570c62/minimal_mom_01deg
+          - /short/public/access-om2/input_38570c62/mom_01deg
+      ncpus: 1717
 
     - name: ice
       model: cice5
       exe: cice_auscom_3600x2700_400p.exe
       input: /short/public/access-om2/input_38570c62/cice_01deg
-      ncpus: 400
+      ncpus: 432
 
 # Collation
 collate: true
@@ -37,21 +40,11 @@ collate_ncpus: 4
 collate_queue: expressbw
 collate_flags: -n4 -z -m -r
 
+mpirun: --mca orte_base_help_aggregate 0
+
 # Misc
 runlog: False
 stacksize: unlimited
-# exe_prefix: /short/public/aph502/env-wrapper.sh
-# mpirun: --mca orte_base_help_aggregate 0 --mca btl_openib_eager_limit 4096 --mca btl_openib_max_send_size 8192 --mca mtl mxm --mca pml cm  -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
-# mpirun: --mca orte_base_help_aggregate 0 --mca btl_openib_eager_limit 4096 --mca btl_openib_max_send_size 8192 --mca pml yalla  -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
-# Ben Menadue suggestion, email 2018-04-18
-# mpirun: -mca coll ^fca --mca pml yalla -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
-# mpirun: --mca orte_base_help_aggregate 0 --mca pml yalla
-#mpirun: --mca pml yalla -x MXM_LOG_FILE=$PBS_JOBFS/mxm.log
-# ipm: 2.0.5
 qsub_flags: -lother=hyperthread -W umask=027
-# for normalbw
-# platform:
-#    nodesize: 28
 mpi:
     module: openmpi/1.10.2
-#postscript: sync_output_to_gdata.sh
