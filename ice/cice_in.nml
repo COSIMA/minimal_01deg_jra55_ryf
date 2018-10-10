@@ -5,7 +5,7 @@
   , istep0         = 0
   , dt             = 300
   , npt            = 6480
-  , ndtd           = 3
+  , ndtd           = 2
   , runtype        = 'initial'
   , ice_ic         = 'default'
   , restart        = .false.
@@ -17,7 +17,7 @@
   , restart_file   = 'iced'
   , pointer_file   = './RESTART/ice.restart_file'
   , dumpfreq       = 'm'
-  , dumpfreq_n     = 3
+  , dumpfreq_n     = 1
   , dump_last      = .true.
   , diagfreq       = 960
   , diag_type      = 'file'
@@ -48,9 +48,9 @@
 /
 
 &domain_nml
-    nprocs = 432
+    nprocs = 335
   , processor_shape   = 'square-ice'
-  , distribution_type = 'roundrobin'
+  , distribution_type = 'sectrobin'
   , distribution_wght = 'latitude'
   , ew_boundary_type  = 'cyclic'
   , ns_boundary_type  = 'tripole'
@@ -195,22 +195,22 @@
   , f_VGRDb        = .false.
   , f_bounds       = .false.
   , f_sice         = 'x' 
-  , f_hi           = 'md'
+  , f_hi           = 'm'
   , f_hs           = 'm' 
   , f_Tsfc         = 'm' 
-  , f_aice         = 'md' 
-  , f_uvel         = 'md' 
-  , f_vvel         = 'md' 
+  , f_aice         = 'm' 
+  , f_uvel         = 'm' 
+  , f_vvel         = 'm' 
   , f_fswdn        = 'x' 
   , f_flwdn        = 'x'
   , f_snow         = 'x' 
   , f_snow_ai      = 'x' 
   , f_rain         = 'x' 
   , f_rain_ai      = 'x' 
-  , f_sst          = 'd' 
-  , f_sss          = 'd' 
-  , f_uocn         = 'd' 
-  , f_vocn         = 'd' 
+  , f_sst          = 'm' 
+  , f_sss          = 'm' 
+  , f_uocn         = 'm' 
+  , f_vocn         = 'm' 
   , f_frzmlt       = 'x'
   , f_fswfac       = 'x'
   , f_fswabs       = 'x' 
@@ -243,8 +243,8 @@
   , f_meltl        = 'x'
   , f_fresh        = 'x'
   , f_fresh_ai     = 'x'
-  , f_fsalt        = 'd'
-  , f_fsalt_ai     = 'd'
+  , f_fsalt        = 'm'
+  , f_fsalt_ai     = 'm'
   , f_fhocn        = 'x' 
   , f_fhocn_ai     = 'x' 
   , f_fswthru      = 'x' 
@@ -252,8 +252,8 @@
   , f_fsurf_ai     = 'x'
   , f_fcondtop_ai  = 'x'
   , f_fmeltt_ai    = 'm' 
-  , f_strairx      = 'md' 
-  , f_strairy      = 'md' 
+  , f_strairx      = 'm' 
+  , f_strairy      = 'm' 
   , f_strtltx      = 'x' 
   , f_strtlty      = 'x' 
   , f_strcorx      = 'x' 
@@ -263,10 +263,10 @@
   , f_strintx      = 'x' 
   , f_strinty      = 'x'
   , f_strength     = 'm'
-  , f_divu         = 'md'
-  , f_shear        = 'md'
-  , f_sig1         = 'md' 
-  , f_sig2         = 'md' 
+  , f_divu         = 'm'
+  , f_shear        = 'm'
+  , f_sig1         = 'm' 
+  , f_sig2         = 'm' 
   , f_dvidtt       = 'x' 
   , f_dvidtd       = 'x' 
   , f_daidtt       = 'x'
@@ -279,7 +279,7 @@
   , f_icepresent   = 'x'
   , f_iage         = 'm'
   , f_FY           = 'x'
-  , f_aicen        = 'd'
+  , f_aicen        = 'm'
   , f_vicen        = 'm'
   , f_Tinz         = 'x'
   , f_Sinz         = 'x'

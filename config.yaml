@@ -1,10 +1,13 @@
 # PBS configuration
 queue: normalbw
 project: x77
-walltime: 1:00:00
+walltime: 5:00:00
 jobname: minimal_01deg_jra55_ryf
-ncpus: 2156
-mem: 9850Gb
+ncpus: 2080
+platform:
+    nodesize: 16
+    nodemem: 64
+
 shortpath: /short/x77
 
 # Model configuration
@@ -14,13 +17,13 @@ input: /short/public/access-om2/input_38570c62/common_01deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /short/public/access-om2/bin/yatm_e8ad3723.exe
+      exe: yatm.exe
       input: /short/public/access-om2/input_38570c62/yatm_01deg
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: /short/public/access-om2/bin/fms_ACCESS-OM_afe80bfd.x
+      exe: fms_ACCESS-OM.x
       input:
           - /short/public/access-om2/input_38570c62/minimal_mom_01deg
           - /short/public/access-om2/input_38570c62/mom_01deg
@@ -28,9 +31,9 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: cice_auscom_3600x2700_400p.exe
+      exe: cice_auscom_3600x2700_432p_boundary_opt.exe
       input: /short/public/access-om2/input_38570c62/cice_01deg
-      ncpus: 432
+      ncpus: 335
 
 # Collation
 collate: true
