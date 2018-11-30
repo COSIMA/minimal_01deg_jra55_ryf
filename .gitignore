@@ -4,4 +4,5 @@ access-om2.err
 access-om2.out
 .DS_Store
 ._.DS_Store
-
+minimal_01deg_c.e*
+minimal_01deg_c.o*
