@@ -14,13 +14,13 @@ input: /short/public/access-om2/input_08022019/common_01deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
-      exe: /short/public/access-om2/bin/yatm_347e0018.exe
+      exe: /short/public/access-om2/bin/yatm_b77aecd2.exe
       input: /short/public/access-om2/input_08022019/yatm_01deg
       ncpus: 1
 
     - name: ocean
       model: mom
-      exe: /short/public/access-om2/bin/fms_ACCESS-OM_7c8bb961.x
+      exe: /short/public/access-om2/bin/fms_ACCESS-OM_3702ad86.x
       input:
           - /short/public/access-om2/input_08022019/minimal_mom_01deg
           - /short/public/access-om2/input_08022019/mom_01deg
