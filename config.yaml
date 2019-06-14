@@ -20,7 +20,7 @@ submodels:
 
     - name: ocean
       model: mom
-      exe: /short/public/access-om2/bin/fms_ACCESS-OM_3702ad86.x
+      exe: /short/public/access-om2/bin/fms_ACCESS-OM_2a69f46f_libaccessom2_b77aecd2.x
       input:
           - /short/public/access-om2/input_08022019/minimal_mom_01deg
           - /short/public/access-om2/input_08022019/mom_01deg
@@ -28,7 +28,7 @@ submodels:
 
     - name: ice
       model: cice5
-      exe: /short/public/access-om2/bin/cice_auscom_3600x2700_432p_d063b8ea7.exe
+      exe: /short/public/access-om2/bin/cice_auscom_3600x2700_722p_47650cc7_libaccessom2_b77aecd2.exe
       input:
           - /short/public/access-om2/input_08022019/cice_01deg
       ncpus: 335
