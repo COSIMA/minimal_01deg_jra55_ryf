@@ -7,24 +7,15 @@ ACCESS-OM2-01
 # https://raw.githubusercontent.com/COSIMA/access-om2/master/MOM_diags.txt
 # https://github.com/COSIMA/access-om2/wiki/Technical-documentation#MOM5-diagnostics-list
 
+# This diag_table is intended as a minimal diag_table for the RYF spinup.
+# Note that 3D fields are specified as 3-monthly, which restricts the 
+# possible options for simulation length
+
 # output files
-"ocean_daily",      1,  "days",   1, "days", "time",
 "ocean_month",      1,  "months", 1, "days", "time",
-"ocean",            1,  "months", 1, "days", "time",
-"ocean_snapshot",   1,  "months", 1, "days", "time",
+"ocean",            3,  "months", 1, "days", "time",
 "ocean_grid",      -1,  "months", 1, "days", "time",
 "ocean_scalar",     1,  "months", 1, "days", "time",
-# "ocean_temp_3hourly",    3,  "hours",  1, "days", "time",
-# "ocean_salt_3hourly",    3,  "hours",  1, "days", "time",
-# "ocean_pot_rho_2_3hourly",    3,  "hours",  1, "days", "time",
-# "ocean_speed_3hourly",    3,  "hours",  1, "days", "time",
-
-# Adele's diags for Ruth, June 2018 -- 3D daily output of uhrho_et, vhrho_nt, temp, salt and rho_dzt, south of 55S -- just need 2 years of RYF
-#"southern_ocean_daily_temp",  24,  "hours", 1, "days", "time",
-#"southern_ocean_daily_salt",  24,  "hours", 1, "days", "time",
-#"southern_ocean_daily_uhrho_et",  24,  "hours", 1, "days", "time",
-#"southern_ocean_daily_vhrho_nt",  24,  "hours", 1, "days", "time",
-#"southern_ocean_daily_rho_dzt",  24,  "hours", 1, "days", "time",
 
 # Save ocean grid data once and for all
 "ocean_model","geolon_t","geolon_t", "ocean_grid","all",.false.,"none",2
@@ -53,10 +44,8 @@ ACCESS-OM2-01
 "ocean_model","v","v",                  "ocean","all",.true.,"none",2
 "ocean_model","wt","wt",                "ocean","all",.true.,"none",2
 "ocean_model","dzt","dzt",              "ocean","all",.true.,"none",2
-"ocean_model","press","press",  "ocean","all",.true.,"none",2
 "ocean_model","rho","rho",  "ocean","all",.true.,"none",2
 "ocean_model","pot_rho_0","pot_rho_0",  "ocean","all",.true.,"none",2
-"ocean_model","pot_rho_2","pot_rho_2",  "ocean","all",.true.,"none",2
 "ocean_model","tx_trans","tx_trans",    "ocean","all",.true.,"none",2
 "ocean_model","ty_trans","ty_trans",    "ocean","all",.true.,"none",2
 "ocean_model","ty_trans_submeso","ty_trans_submeso",    "ocean","all",.true.,"none",2
@@ -65,27 +54,13 @@ ACCESS-OM2-01
 "ocean_model","ty_trans_nrho_submeso","ty_trans_nrho_submeso","ocean","all",.true.,"none",2
 "ocean_model","temp_xflux_adv","temp_xflux_adv","ocean","all",.true.,"none",2
 "ocean_model","temp_yflux_adv","temp_yflux_adv","ocean","all",.true.,"none",2
-"ocean_model","diff_cbt_t","diff_cbt_t",    "ocean","all",.true.,"none",2
-"ocean_model","buoyfreq2_wt","buoyfreq2_wt",    "ocean","all",.true.,"none",2
-"ocean_model","speed","speed",    "ocean","all",.true.,"none",2
-"ocean_model","vert_pv","vert_pv",    "ocean","all",.true.,"none",2
-# for Adele:
-# "ocean_model","uhrho_et","uhrho_et",    "ocean","all",.true.,"none",2
-# "ocean_model","vhrho_nt","vhrho_nt",    "ocean","all",.true.,"none",2
+#"ocean_model","diff_cbt_t","diff_cbt_t",    "ocean","all",.true.,"none",2
+#"ocean_model","buoyfreq2_wt","buoyfreq2_wt",    "ocean","all",.true.,"none",2
+#"ocean_model","speed","speed",    "ocean","all",.true.,"none",2
+#"ocean_model","vert_pv","vert_pv",    "ocean","all",.true.,"none",2
 
-# 2d & 3d fields - snapshots at end of each run
-"ocean_model","eta_t","eta_t","ocean_snapshot","all",.false.,"none",2
-"ocean_model","u","u","ocean_snapshot","all",.false.,"none",2
-"ocean_model","v","v","ocean_snapshot","all",.false.,"none",2
-
-# 2d fields - daily output
-"ocean_model","eta_t","eta_t",                     "ocean_daily","all",.true.,"none",2
-"ocean_model","surface_temp","surface_temp",     "ocean_daily","all",.true.,"none",2
-"ocean_model","mld","mld",     "ocean_daily","all",.true.,"none",2
-
-# 2d fields - monthly output
-"ocean_model","sea_level","sea_level",             "ocean_month","all",.true.,"none",2
-"ocean_model","eta_t","eta_t",                     "ocean_month","all",.true.,"none",2
+# 2d fields
+"ocean_model","sea_level","sea_level",        "ocean_month","all",.true.,"none",2
 "ocean_model","sea_level_sq","sea_levelsq",        "ocean_month","all",.true.,"none",2
 "ocean_model","surface_temp","surface_temp",     "ocean_month","all",.true.,"none",2
 "ocean_model","surface_salt","surface_salt",     "ocean_month","all",.true.,"none",2
@@ -116,13 +91,15 @@ ACCESS-OM2-01
 "ocean_model","frazil_3d_int_z","frazil_3d_int_z", "ocean_month","all",.true.,"none",2
 "ocean_model","tau_x","tau_x",                     "ocean_month","all",.true.,"none",2
 "ocean_model","tau_y","tau_y",                     "ocean_month","all",.true.,"none",2
-"ocean_model","bmf_u","bmf_u",                     "ocean_month","all",.true.,"none",2
-"ocean_model","bmf_v","bmf_v",                     "ocean_month","all",.true.,"none",2
+#"ocean_model","bmf_u","bmf_u",                     "ocean_month","all",.true.,"none",2
+#"ocean_model","bmf_v","bmf_v",                     "ocean_month","all",.true.,"none",2
 "ocean_model","tx_trans_int_z","tx_trans_int_z",   "ocean_month","all",.true.,"none",2
 "ocean_model","ty_trans_int_z","ty_trans_int_z",   "ocean_month","all",.true.,"none",2
 "ocean_model","pbot_t","pbot_t",                   "ocean_month","all",.true.,"none",2
-"ocean_model","temp_yflux_adv_int_z","temp_yflux_adv_int_z",                   "ocean_month","all",.true.,"none",2
- 
+#"ocean_model","temp_yflux_adv_int_z","temp_yflux_adv_int_z",                   "ocean_month","all",.true.,"none",2
+#"ocean_model","temp_xflux_adv_int_z","temp_xflux_adv_int_z",                   "ocean_month","all",.true.,"none",2
+#"ocean_model","temp_yflux_submeso_int_z","temp_yflux_submeso_int_z",                   "ocean_month","all",.true.,"none",2
+#"ocean_model","temp_xflux_submeso_int_z","temp_xflux_submeso_int_z",                   "ocean_month","all",.true.,"none",2
 
 # timeseries - 1D scalar variables
 "ocean_model","ke_tot","ke_tot", "ocean_scalar","all",.true.,"none",1
@@ -159,17 +136,4 @@ ACCESS-OM2-01
 "ocean_model","total_ocean_fprec_melt_heat","total_ocean_fprec_melt_heat"    ,"ocean_scalar","all",.true.,"none",1
 "ocean_model","total_ocean_calving_melt_heat","total_ocean_calving_melt_heat","ocean_scalar","all",.true.,"none",1
 "ocean_model","total_ocean_sens_heat","total_ocean_sens_heat"                ,"ocean_scalar","all",.true.,"none",1
-
-# 3-hourly output
-# "ocean_model","temp","temp",            "ocean_temp_3hourly","all",.true.,"none",2
-# "ocean_model","salt","salt",            "ocean_salt_3hourly","all",.true.,"none",2
-# "ocean_model","pot_rho_2","pot_rho_2",  "ocean_pot_rho_2_3hourly","all",.true.,"none",2
-# "ocean_model","speed","speed",          "ocean_speed_3hourly","all",.true.,"none",2
-
-# Adele's diags for Ruth, June 2018 -- 3D daily output of uhrho_et, vhrho_nt, temp, salt and rho_dzt, south of 55S -- just need 2 years of RYF
-#"ocean_model","temp","temp","southern_ocean_daily_temp","all",.true.,"-280,80,-80,-55,-1,-1",2
-#"ocean_model","salt","salt","southern_ocean_daily_salt","all",.true.,"-280,80,-80,-55,-1,-1",2
-#"ocean_model","uhrho_et","uhrho_et","southern_ocean_daily_uhrho_et","all",.true.,"-280,80,-80,-55,-1,-1",2
-#"ocean_model","vhrho_nt","vhrho_nt","southern_ocean_daily_vhrho_nt","all",.true.,"-280,80,-80,-55,-1,-1",2
-#"ocean_model","rho_dzt","rho_dzt","southern_ocean_daily_rho_dzt","all",.true.,"-280,80,-80,-55,-1,-1",2
 
