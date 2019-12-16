@@ -9,26 +9,26 @@ ncpus: 2064
 # Model configuration
 name: common
 model: access-om2
-input: /short/public/access-om2/input_08022019/common_01deg_jra55
+input: /short/public/access-om2/input_rc/common_01deg_jra55
 submodels:
     - name: atmosphere
       model: yatm
       exe: /short/public/access-om2/bin/yatm_b77aecd2.exe
-      input: /short/public/access-om2/input_08022019/yatm_01deg
+      input: /short/public/access-om2/input_rc/yatm_01deg
       ncpus: 1
 
     - name: ocean
       model: mom
       exe: /short/public/access-om2/bin/fms_ACCESS-OM_2a69f46f_libaccessom2_b77aecd2.x
       input:
-          - /short/public/access-om2/input_08022019/minimal_mom_01deg
-          - /short/public/access-om2/input_08022019/mom_01deg
+          - /short/public/access-om2/input_rc/minimal_mom_01deg
+          - /short/public/access-om2/input_rc/mom_01deg
       ncpus: 1717
 
     - name: ice
       model: cice5
       exe: /short/public/access-om2/bin/cice_auscom_3600x2700_722p_47650cc7_libaccessom2_b77aecd2.exe
-      input: /short/public/access-om2/input_08022019/cice_01deg
+      input: /short/public/access-om2/input_rc/cice_01deg
       ncpus: 335
 
 # Collation
